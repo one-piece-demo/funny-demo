@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100vh;
+    }
+    .app {
+      height: 100%;
+      overflow: hidden;
+    }
+  </style>
+  <link rel="stylesheet" href="./style-animate.css">
+</head>
+<body>
+  <div class="app">
+    <div class="praise-bubble" id='praise-bubble'>
+      <h2>点赞气泡</h2>
+      <div class="bubble b1 bubble-init "></div>
+      <div class="bubble b2 bubble-init "></div>
+      <div class="bubble b3 bubble-init "></div>
+      <div style="width:300px;height:600px; margin: 0 auto;">
+        <canvas id="canvas" width="200" height="400" style="width:100%;height:100%"></canvas>
+      </div>
+    </div>
+  </div>
+</body>
+<!-- <script src="./style-animate.js"></script> -->
+
+<script src="./canvas-animate.js"></script>
+<script>
+  const bubble = new Bubble();
+  let last = 0;
+
+  const timer = setInterval(() => {
+    last ++;
+    if (last > 100) {
+      clearInterval(timer);
+      return;
+    }
+    bubble.start();
+  }, 300)
+</script>
+</html>

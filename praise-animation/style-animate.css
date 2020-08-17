@@ -1,0 +1,151 @@
+body {
+  --bubble_time1: 6s;
+  --bubble_time2: 4s;
+  --bubble_time3: 3s;
+}
+
+.praise-bubble {
+  position: relative;
+  height: 100%;
+}
+
+.bubble {
+  width: 60px;
+  height: 60px;
+  border-radius: 50% 50%;
+  
+}
+
+.b1 {
+  border-color: #e4393c;
+  background-color: red;
+  animation: 
+    bubble_y var(--bubble_time1) linear 1 forwards,
+    bubble_big1 var(--bubble_time1) linear 1 forwards,
+    bubble_move1 var(--bubble_time1) linear 1 forwards
+  ;
+}
+.b2 {
+  border-color: aquamarine;
+  background-color: cyan;
+  animation: 
+    bubble_y var(--bubble_time2) linear 1 forwards,
+    bubble_big2 var(--bubble_time2) linear 1 forwards,
+    bubble_move2 var(--bubble_time2) linear 1 forwards
+  ;
+}
+.b3 {
+  border-color: deepskyblue;
+  background-color: lightskyblue;
+  animation: 
+    bubble_y var(--bubble_time3) linear 1 forwards,
+    bubble_big3 var(--bubble_time3) linear 1 forwards,
+    bubble_move3 var(--bubble_time3) linear 1 forwards
+  ;
+}
+
+.bubble-init {
+  position: absolute;
+  right: 20%;
+  bottom: 0;
+}
+
+@keyframes bubble_y {
+  0% {
+    bottom:0;
+  }
+  75%{
+    opacity: 1;
+}
+  100% {
+    bottom: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes bubble_big1 {
+  0% {
+      transform: scale(.3);
+  }
+  100% {
+      transform: scale(1);
+  }
+}
+
+@keyframes bubble_move1 {
+  0% {
+  }
+  20% {
+    transform: translateX(-60px)
+  }
+  40% {
+    transform: translateX(60px)
+  }
+  60% {
+    transform: translateX(-125px)
+  }
+  80% {
+    transform: translateX(95px)
+  }
+  100% {
+    transform: translateX(0px)
+  }
+}
+
+@keyframes bubble_big2 {
+  0% {
+      transform: scale(.4);
+  }
+  100% {
+      transform: scale(1);
+  }
+}
+
+@keyframes bubble_move2 {
+  0% {
+  }
+  20% {
+    transform: translateX(-20px)
+  }
+  40% {
+    transform: translateX(60px)
+  }
+  60% {
+    transform: translateX(-165px)
+  }
+  80% {
+    transform: translateX(85px)
+  }
+  100% {
+    transform: translateX(0px)
+  }
+}
+
+@keyframes bubble_big3 {
+  0% {
+      transform: scale(.2);
+  }
+  100% {
+      transform: scale(1);
+  }
+}
+
+@keyframes bubble_move3 {
+  0% {
+  }
+  20% {
+    transform: translateX(-10px)
+  }
+  40% {
+    transform: translateX(100px)
+  }
+  60% {
+    transform: translateX(-85px)
+  }
+  80% {
+    transform: translateX(125px)
+  }
+  100% {
+    transform: translateX(0px)
+  }
+}
