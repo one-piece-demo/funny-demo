@@ -1,0 +1,183 @@
+#leaf {
+  fill-opacity:0.2;
+  fill:#C598D8;
+}
+
+@keyframes leaf1{
+0%{opacity:0; transform:rotate(0deg); transform-origin:400px 300px}
+100%{transform:rotate(10deg); transform-origin:400px 300px}
+}
+#leaf1{animation:leaf1 ease-in-out 0.1s both ; }
+
+@keyframes leaf2{0%{opacity:0; transform:rotate(10deg); transform-origin:400px 300px}
+100%{transform:rotate(20deg); transform-origin:400px 300px}
+}
+#leaf2{animation:leaf2 ease-in-out 0.1s both 0.1s; }
+
+@keyframes leaf3{0%{opacity:0; transform:rotate(20deg); transform-origin:400px 300px}
+100%{transform:rotate(30deg); transform-origin:400px 300px}
+}
+#leaf3{animation:leaf3 ease-in-out 0.1s both 0.2s;}
+
+@keyframes leaf4{0%{opacity:0; transform:rotate(30deg); transform-origin:400px 300px}
+100%{transform:rotate(40deg); transform-origin:400px 300px}
+}
+#leaf4{animation:leaf4 ease-in-out 0.1s both 0.3s;}
+
+@keyframes leaf5{0%{opacity:0; transform:rotate(40deg); transform-origin:400px 300px}
+100%{transform:rotate(50deg); transform-origin:400px 300px}
+}
+#leaf5{animation:leaf5 ease-in-out 0.1s both 0.4s;}
+
+@keyframes leaf6{0%{opacity:0; transform:rotate(50deg); transform-origin:400px 300px}
+100%{transform:rotate(60deg); transform-origin:400px 300px}
+}
+#leaf6{animation:leaf6 ease-in-out 0.1s both 0.5s;}
+
+@keyframes leaf7{0%{opacity:0; transform:rotate(60deg); transform-origin:400px 300px}
+100%{transform:rotate(70deg); transform-origin:400px 300px}
+}
+#leaf7{animation:leaf7 ease-in-out 0.1s both 0.6s;}
+
+@keyframes leaf8{0%{opacity:0; transform:rotate(70deg); transform-origin:400px 300px}
+100%{transform:rotate(80deg); transform-origin:400px 300px}
+}
+#leaf8{animation:leaf8 ease-in-out 0.1s both 0.7s;}
+
+@keyframes leaf9{0%{opacity:0; transform:rotate(80deg); transform-origin:400px 300px}
+100%{transform:rotate(90deg); transform-origin:400px 300px}
+}
+#leaf9{animation:leaf9 ease-in-out 0.1s both 0.8s;}
+
+
+
+@keyframes leaf10{0%{opacity:0; transform:rotate(90deg); transform-origin:400px 300px}
+100%{transform:rotate(100deg); transform-origin:400px 300px}
+}
+#leaf10{animation:leaf10 ease-in-out 0.1s both 0.9s;}
+
+@keyframes leaf11{0%{opacity:0; transform:rotate(100deg); transform-origin:400px 300px}
+100%{transform:rotate(110deg); transform-origin:400px 300px}
+}
+#leaf11{animation:leaf11 ease-in-out 0.1s both 1.0s;}
+
+
+@keyframes leaf12{0%{opacity:0; transform:rotate(110deg); transform-origin:400px 300px}
+100%{transform:rotate(120deg); transform-origin:400px 300px}
+}
+#leaf12{animation:leaf12 ease-in-out 0.1s both 1.1s;}
+
+@keyframes leaf13{0%{opacity:0; transform:rotate(120deg); transform-origin:400px 300px}
+100%{transform:rotate(130deg); transform-origin:400px 300px}
+}
+#leaf13{animation:leaf13 ease-in-out 0.1s both 1.2s;}
+
+@keyframes leaf14{0%{opacity:0; transform:rotate(130deg); transform-origin:400px 300px}
+100%{transform:rotate(140deg); transform-origin:400px 300px}
+}
+#leaf14{animation:leaf14 ease-in-out 0.1s both 1.3s;}
+
+@keyframes leaf15{0%{opacity:0; transform:rotate(140deg); transform-origin:400px 300px}
+100%{transform:rotate(150deg); transform-origin:400px 300px}
+}
+#leaf15{animation:leaf15 ease-in-out 0.1s both 1.4s;}
+
+@keyframes leaf16{0%{opacity:0; transform:rotate(150deg); transform-origin:400px 300px}
+100%{transform:rotate(160deg); transform-origin:400px 300px}
+}
+#leaf16{animation:leaf16 ease-in-out 0.1s both 1.5s;}
+
+@keyframes leaf17{0%{opacity:0; transform:rotate(160deg); transform-origin:400px 300px}
+100%{transform:rotate(170deg); transform-origin:400px 300px}
+}
+#leaf17{animation:leaf17 ease-in-out 0.1s both 1.6s;}
+
+@keyframes leaf18{0%{opacity:0; transform:rotate(170deg); transform-origin:400px 300px}
+100%{transform:rotate(180deg); transform-origin:400px 300px}
+}
+#leaf18{animation:leaf18 ease-in-out 0.1s both 1.7s;}
+
+@keyframes leaf19{0%{opacity:0; transform:rotate(180deg); transform-origin:400px 300px}
+100%{transform:rotate(190deg); transform-origin:400px 300px}
+}
+#leaf19{animation:leaf19 ease-in-out 0.1s both 1.8s;}
+
+@keyframes leaf20{0%{opacity:0; transform:rotate(190deg); transform-origin:400px 300px}
+100%{transform:rotate(200deg); transform-origin:400px 300px}
+}
+#leaf20{animation:leaf20 ease-in-out 0.1s both 1.9s;}
+
+@keyframes leaf21{0%{opacity:0; transform:rotate(200deg); transform-origin:400px 300px}
+100%{transform:rotate(210deg); transform-origin:400px 300px}
+}
+#leaf21{animation:leaf21 ease-in-out 0.1s both 2.0s;}
+
+@keyframes leaf22{0%{opacity:0; transform:rotate(210deg); transform-origin:400px 300px}
+100%{transform:rotate(220deg); transform-origin:400px 300px}
+}
+#leaf22{animation:leaf22 ease-in-out 0.1s both 2.1s;}
+
+@keyframes leaf23{0%{opacity:0; transform:rotate(220deg); transform-origin:400px 300px}
+100%{transform:rotate(230deg); transform-origin:400px 300px}
+}
+#leaf23{animation:leaf23 ease-in-out 0.1s both 2.2s;}
+
+@keyframes leaf24{0%{opacity:0; transform:rotate(230deg); transform-origin:400px 300px}
+100%{transform:rotate(240deg); transform-origin:400px 300px}
+}
+#leaf24{animation:leaf24 ease-in-out 0.1s both 2.3s;}
+
+@keyframes leaf25{0%{opacity:0; transform:rotate(240deg); transform-origin:400px 300px}
+100%{transform:rotate(250deg); transform-origin:400px 300px}
+}
+#leaf25{animation:leaf25 ease-in-out 0.1s both 2.4s;}
+
+@keyframes leaf26{0%{opacity:0; transform:rotate(250deg); transform-origin:400px 300px}
+100%{transform:rotate(260deg); transform-origin:400px 300px}
+}
+#leaf26{animation:leaf26 ease-in-out 0.1s both 2.5s;}
+
+@keyframes leaf27{0%{opacity:0; transform:rotate(260deg); transform-origin:400px 300px}
+100%{transform:rotate(270deg); transform-origin:400px 300px}
+}
+#leaf27{animation:leaf27 ease-in-out 0.1s both 2.6s;}
+
+@keyframes leaf28{0%{opacity:0; transform:rotate(270deg); transform-origin:400px 300px}
+100%{transform:rotate(280deg); transform-origin:400px 300px}
+}
+#leaf28{animation:leaf28 ease-in-out 0.1s both 2.7s;}
+
+@keyframes leaf29{0%{opacity:0; transform:rotate(280deg); transform-origin:400px 300px}
+100%{transform:rotate(290deg); transform-origin:400px 300px}
+}
+#leaf29{animation:leaf29 ease-in-out 0.1s both 2.8s;}
+
+@keyframes leaf30{0%{opacity:0; transform:rotate(290deg); transform-origin:400px 300px}
+100%{transform:rotate(300deg); transform-origin:400px 300px}
+}
+#leaf30{animation:leaf30 ease-in-out 0.1s both 2.9s;}
+
+@keyframes leaf31{0%{opacity:0; transform:rotate(300deg); transform-origin:400px 300px}
+100%{transform:rotate(310deg); transform-origin:400px 300px}
+}
+#leaf31{animation:leaf31 ease-in-out 0.1s both 3.0s;}
+
+@keyframes leaf32{0%{opacity:0; transform:rotate(310deg); transform-origin:400px 300px}
+100%{transform:rotate(320deg); transform-origin:400px 300px}
+}
+#leaf32{animation:leaf32 ease-in-out 0.1s both 3.1s;}
+
+@keyframes leaf33{0%{opacity:0; transform:rotate(320deg); transform-origin:400px 300px}
+100%{transform:rotate(330deg); transform-origin:400px 300px}
+}
+#leaf33{animation:leaf33 ease-in-out 0.1s both 3.2s;}
+
+@keyframes leaf34{0%{opacity:0; transform:rotate(330deg); transform-origin:400px 300px}
+100%{transform:rotate(340deg); transform-origin:400px 300px}
+}
+#leaf34{animation:leaf34 ease-in-out 0.1s both 3.3s;}
+
+@keyframes leaf35{0%{opacity:0; transform:rotate(340deg); transform-origin:400px 300px}
+100%{transform:rotate(350deg); transform-origin:400px 300px}
+}
+#leaf35{animation:leaf35 ease-in-out 0.1s both 3.4s;}
