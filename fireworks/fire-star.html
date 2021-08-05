@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HAPPY BIRTHDAY</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      overflow: hidden;
+    }
+
+    .container {
+      background: linear-gradient(#07112c, #2355d6);
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .land {
+      position: relative;
+      z-index: 20;
+      height: 60vh;
+      margin-top: 75vh;
+      width: 300%;
+      background: linear-gradient(#072945 0%, #000 30%);
+      border-radius: 50%;
+      margin-left: -100vw;
+    }
+
+    .happy-birthday__container {
+      position: absolute;
+      top: 130px;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      opacity: .6;
+      transition: all 2s;
+    }
+
+    .happy-birthday__container>div {
+      height: 100px;
+      width: 100px;
+      margin: 0 10px;
+      flex: 0 1 auto;
+    }
+
+    .person {
+      position: absolute;
+      z-index: 99;
+      top: calc(75vh - 100px);
+      left: calc(50vw - 30px);
+      height: 100px;
+      width: 60px;
+    }
+
+    .person-reflect {
+      -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, 0.6)));
+    }
+
+    .head {
+      position: relative;
+      height: 40px;
+      width: 40px;
+      background-color: #000;
+      border-radius: 50%;
+      margin-left: 10px;
+      z-index: 99;
+    }
+
+    .body-container {
+      margin-left: 15px;
+      margin-top: -10px;
+      width: 30px;
+      position: relative;
+      z-index: 20;
+    }
+
+    .body-content {
+      width: 100%;
+      height: 35px;
+      background-color: #000;
+    }
+
+    .body-radius {
+      width: 100%;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #000;
+      margin-top: -5px;
+    }
+
+    .legs {
+      margin-left: 15px;
+      margin-top: -6px;
+      height: 30px;
+      width: 36px;
+    }
+
+    .left {
+      display: inline-block;
+      border-right: 7px solid transparent;
+      border-left: 5px solid transparent;
+      border-top: 35px solid #000;
+    }
+
+    .right {
+      display: inline-block;
+      border-right: 6px solid transparent;
+      border-left: 7px solid transparent;
+      border-top: 35px solid #000;
+    }
+
+    .left-hand {
+      position: absolute;
+      height: 35px;
+      width: 10px;
+      background-color: #000;
+      border-radius: 50%;
+      left: 10px;
+      top: 35px;
+      z-index: 1;
+    }
+
+    .right-hand {
+      position: absolute;
+      width: 9px;
+      height: 50px;
+      background-color: #000;
+      left: 45px;
+      top: 7px;
+      border-radius: 50%;
+      transform: rotate(20deg);
+      z-index: 1;
+    }
+
+    .person-show>.head {
+      background: linear-gradient(#072253, rgb(20, 19, 65));
+    }
+
+    .person-show>.body-container>div {
+      background-color: rgb(20, 19, 65);
+    }
+
+    .person-show>.left-hand,
+    .right-hand {
+      background-color: rgb(20, 19, 65);
+    }
+
+    .person-show .legs>div {
+      border-top-color: #151618;
+    }
+
+    @keyframes star-scale {
+      from {
+        transform: scale(1, 1);
+      }
+
+      25% {
+        transform: scale(0.1, 0.1);
+      }
+
+      50% {
+        transform: scale(1, 1);
+      }
+
+      25% {
+        transform: scale(2, 2);
+      }
+
+      to {
+        transform: scale(1, 1);
+      }
+    }
+
+    .star {
+      height: 3px;
+      width: 3px;
+      background-color: #faf89d;
+      border-radius: 50%;
+      position: absolute;
+      animation: star-scale 2s;
+      animation-iteration-count: infinite;
+    }
+
+    #my-canvas {
+      position: absolute;
+      width: 100%;
+      height: 80vh;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="happy-birthday__container">
+      <div id="sheng"></div>
+      <div id="ri"></div>
+      <div id="kuai"></div>
+      <div id="le"></div>
+      <div id="ya"></div>
+      <div id="site"></div>
+      <div id="xiao"></div>
+      <div id="han"></div>
+      <div id="cao"></div>
+    </div>
+    <canvas id="my-canvas"></canvas>
+    <div class="person person-reflect">
+      <div class="head"></div>
+      <div class="left-hand"></div>
+      <div class="right-hand"></div>
+      <div class="body-container">
+        <div class="body-content"></div>
+        <div class="body-radius"></div>
+      </div>
+      <div class="legs">
+        <div class="left"></div>
+        <div class="right"></div>
+      </div>
+    </div>
+    <div class="person person-show">
+      <div class="head"></div>
+      <div class="left-hand"></div>
+      <div class="right-hand"></div>
+      <div class="body-container">
+        <div class="body-content"></div>
+        <div class="body-radius"></div>
+      </div>
+      <div class="legs">
+        <div class="left"></div>
+        <div class="right"></div>
+      </div>
+    </div>
+    <div class="land"></div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.2/dist/hanzi-writer.min.js"></script>
+  <script>
+    // 烟花效果
+    var canvas = document.getElementById('my-canvas');
+    var context = canvas.getContext('2d');
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight * 0.8;
+    }
+
+    function clearCanvas() {
+      context.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    window.addEventListener('resize', resizeCanvas, false);
+    resizeCanvas();
+
+    function mouseDownHandler(e) {
+      var x = e.clientX;
+      var y = e.clientY;
+      fire(x, y);
+    }
+    var rid;
+    function fire(x, y) {
+      createFireworks(x, y);
+      function tick() {
+        context.globalCompositeOperation = 'destination-out';
+        context.fillStyle = 'rgba(0, 0, 0,' + 20 / 100 + ')';
+        context.fillRect(0, 0, canvas.width, canvas.height);
+        context.globalCompositeOperation = 'lighter';
+        drawFireworks();
+        rid = requestAnimationFrame(tick);
+      }
+      cancelAnimationFrame(rid);
+      tick();
+    }
+    var particles = [];
+    function createFireworks(sx, sy) {
+      clearCanvas();
+      particles = [];
+      var hue = Math.floor(Math.random() * 51) + 150;
+      var hueVariance = 30;
+      var count = 365;
+      for (var i = 0; i < count; i++) {
+        var p = {};
+        var angle = Math.floor(Math.random() * 360);
+        p.radians = angle * Math.PI / 180;
+        p.x = sx;
+        p.y = sy;
+        p.speed = (Math.random() * 5) + .4;
+        p.radius = p.speed;
+        p.size = Math.floor(Math.random() * 3) + 1;
+        p.hue = Math.floor(Math.random() * ((hue + hueVariance) - (hue - hueVariance))) + (hue - hueVariance);
+        p.brightness = Math.floor(Math.random() * 31) + 50;
+        p.alpha = (Math.floor(Math.random() * 61) + 40) / 100;
+        particles.push(p);
+      }
+    }
+    function drawFireworks() {
+      for (var i = 0; i < particles.length; i++) {
+        var p = particles[i];
+        var vx = Math.cos(p.radians) * p.radius;
+        var vy = Math.sin(p.radians) * p.radius + 1.2;
+        p.x += vx;
+        p.y += vy;
+        p.radius *= 1 - p.speed / 300;
+        p.alpha -= 0.005;
+        context.beginPath();
+        context.arc(p.x, p.y, p.size, 0, Math.PI * 2, false);
+        context.closePath();
+        context.fillStyle = 'hsla('+p.hue+100+', 100%, '+p.brightness+'%, '+p.alpha+')';
+        context.fill();
+      }
+    }
+    function fireRandom() {
+      const x = (canvas.width * 0.7) * Math.random() + canvas.width * 0.2;
+      const y = (canvas.height * 0.6) * Math.random() + canvas.height * 0.2;
+      fire(x, y);
+    }
+
+    document.addEventListener('mousedown', mouseDownHandler, false);
+
+    // 星星效果
+    function Star(type) {
+      this.speed = 1;
+      this.star = document.createElement('div');
+      this.star.className = type === 'star' ? 'star' : 'moon';
+      this.star.style.top = '0px';
+      this.star.style.left = Math.random() * window.innerWidth + 1 + 'px';
+      document.body.appendChild(this.star);
+    }
+    Star.prototype.down = function () {
+      var that = this;
+      function move() {
+        that.star.style.top = that.star.offsetTop + that.speed + 'px';
+        if (that.star.offsetTop > window.innerHeight) {
+          clearInterval(timer);
+          document.body.removeChild(that.star);
+        }
+      }
+      var timer = setInterval(move, 25);
+    }
+    let starTimer = setInterval(() => {
+      new Star('star').down();
+    }, 300)
+
+    // 文字效果
+    const BASE_CONFIG = {
+      width: 100,
+      height: 100,
+      padding: 5,
+      delayBetweenStrokes: 0,
+      strokeAnimationSpeed: 1.2,
+      showCharacter: false,
+      showOutline: false,
+    }
+    const WRITER_CONFIG = {
+      ...BASE_CONFIG,
+      strokeColor: '#e09037'
+    };
+
+    const NAME_CONFIG = {
+      ...BASE_CONFIG,
+      strokeColor: '#87db92'
+    };
+
+    const getWriterList = () => {
+      let writerList = [];
+      writerList.push(HanziWriter.create('sheng', '生', WRITER_CONFIG));
+      writerList.push(HanziWriter.create('ri', '日', WRITER_CONFIG));
+      writerList.push(HanziWriter.create('kuai', '快', WRITER_CONFIG));
+      writerList.push(HanziWriter.create('le', '乐', WRITER_CONFIG));
+      writerList.push(HanziWriter.create('ya', '吖', WRITER_CONFIG));
+      writerList.push(HanziWriter.create('xiao', '小', NAME_CONFIG));
+      writerList.push(HanziWriter.create('han', '寒', NAME_CONFIG));
+      writerList.push(HanziWriter.create('cao', '草', NAME_CONFIG));
+      return writerList;
+    }
+
+    const generateAnimateWriter = async (writerList) => {
+      const writerCount = writerList.length;
+      for (const writer of writerList) {
+        await writer.animateCharacter();
+      }
+      
+      document.getElementsByClassName('happy-birthday__container')[0].style.opacity = 0;
+      fireRandom();
+      setInterval(() => {
+        fireRandom();
+      } , 2000);
+    }
+
+    const writerList = getWriterList();
+    generateAnimateWriter(writerList);
+
+  </script>
+</body>
+
+</html>
