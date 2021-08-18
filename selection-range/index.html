@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="./index.js"></script>
+		<link rel="stylesheet" type="text/css" href="../common.css"/>
+		<style type="text/css">
+			.demo-test {
+				height: 120px;
+			}
+			/*.demo-test label {//居中一
+				float: left;
+				display: inline-block;
+				height: 120px;
+				line-height: 120px;
+			}*/
+			textarea {
+				-moz-box-shadow:1px 1px 0 #E7E7E7;
+				-moz-box-sizing:border-box;
+				border-color:#CCCCCC #999999 #999999 #CCCCCC;
+				border-style:solid;
+				border-width:1px;
+				font-family:arial,sans-serif;
+				font-size:13px;
+				height:calc(100% - 18px);
+				min-height: 100px;
+				padding:8px;
+				outline-color:-moz-use-text-color;
+				/*outline-style:none;*/
+				outline-width:medium;
+				width:80%;
+				vertical-align: middle;
+			}
+			.btn-list {
+				margin: 20px;
+				text-align: center;
+			}
+			.btn-list button {
+				background-color: #1ac1c0;
+				color: #FFFFFF;
+				padding: 6px 8px;
+				border-radius: 3px;
+				margin: 0 15px;
+				cursor: pointer;
+				border: 1px solid #1AC1C0;
+			}
+		</style>
+	</head>
+	<body>
+		<div class='demo-box'>
+			<div class="demo-content">
+				<div class='demo-test'>
+					<label>textarea测试：&nbsp;&nbsp;</label>
+					<textarea name="test" rows="6" cols="10" style='width:80%;' id='textarea'></textarea>
+				</div>
+				<div class='btn-list'>
+					<button onclick="getFocusPos()">获取光标位置</button>
+					<button onclick="setFocusPos()">恢复光标位置</button>
+					<button onclick="addFocusText()">光标插入文本</button>
+				</div>
+				
+				<div id='result'></div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var textEleObj = new textareaObj(),
+		 	textEle = document.getElementById('textarea'),
+		 	result = document.getElementById('result'),
+		 	pos;
+		
+		function getFocusPos() {
+			pos = textEleObj.getPos(textEle);
+			result.innerHTML=("<strong>Range :</strong> (" + pos.start + ", " + pos.end + ")<br /><strong>Text :</strong> " + (pos.text ? pos.text : '//...'));
+		}
+		
+		function setFocusPos() {
+			textEleObj.setPos(textEle, pos);
+		}
+		
+		function addFocusText() {
+			getFocusPos();
+			
+			var text = prompt('替换文本：');
+			textEleObj.addText(textEle, pos, text);
+		}
+		
+	</script>
+</html>
