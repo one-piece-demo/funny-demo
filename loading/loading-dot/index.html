@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      background-color: rgba(0, 0, 0, .8);
+    }
+
+    .loading-dot {
+      color: #FFF;
+      position: relative;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 48px;
+      letter-spacing: 4px;
+      line-height: 300px;
+      margin: 0 100px;
+    }
+
+    .loading-dot::before {
+      content: "";
+      position: absolute;
+      right: 68px;
+      bottom: 10px;
+      height: 28px;
+      width: 5.15px;
+      background: currentColor;
+      animation: loaderL 1s linear infinite alternate;
+    }
+
+    .loading-dot::after {
+      content: "";
+      width: 10px;
+      height: 10px;
+      position: absolute;
+      left: 125px;
+      top: 2px;
+      border-radius: 50%;
+      background: red;
+      animation: animloader113 1s linear infinite alternate;
+    }
+
+    /* 阴影实现 L 效果 */
+    @keyframes loaderL {
+      0% {
+        box-shadow: 0 -6px, -122.9px -8px;
+      }
+      25%, 75% {
+        box-shadow: 0 0px, -122.9px -8px;
+      }
+      100% {
+        box-shadow: 0 0px, -122.9px -16px;
+      }
+    }
+
+    @keyframes animloader113 {
+      0% {
+        transform: translate(0px, 0px) scaleX(1);
+      }
+      14% {
+        transform: translate(-12px, -16px) scaleX(1.05);
+      }
+      28% {
+        transform: translate(-27px, -28px) scaleX(1.07);
+      }
+      42% {
+        transform: translate(-46px, -35px) scaleX(1.1);
+      }
+      57% {
+        transform: translate(-70px, -37px) scaleX(1.1);
+      }
+      71% {
+        transform: translate(-94px, -32px) scaleX(1.07);
+      }
+      85% {
+        transform: translate(-111px, -22px) scaleX(1.05);
+      }
+      100% {
+        transform: translate(-125px, -9px) scaleX(1);
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <span class="loading-dot">Load&nbsp;ng</span>
+</body>
+</html>
