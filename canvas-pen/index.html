@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+<div id="div" style="position: relative">
+    <canvas id="canvas">你的浏览器不支持canvas</canvas>
+    <div id="controller">
+        <div id="clear_btn" class="op_btn" onclick ="changeNum()"> 字数</div>
+        <div id="save_btn" onclick="downloadImage()" class="op_btn">保存</div>
+        <div id="back_btn" class="op_btn" onclick="onReset()">重置</div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<script>
+    var context;
+    var canvas;
+    var canvasWidth
+    var canvasHeight
+    //判断是否按下鼠标
+    var isMouseDown = false;
+    //记录上一次鼠标所在位置
+    var lasloc = {x: 0, y: 0};
+    var lasTimeStamp = 0;
+    var laslinewidth = -1;
+    var strokeColor = "black";
+    var num = 7;
+    $(function(){
+        canvasWidth = 300;
+        canvasHeight = canvasWidth * num + 100;
+        canvas = document.getElementById("canvas");
+        context = canvas.getContext("2d");
+        canvas.width = canvasWidth;
+        canvas.height = canvasHeight;
+        drawBackGround();
+        //鼠标按下
+        canvas.onmousedown = function (e) {
+            //阻止默认事件响应
+            e.preventDefault();
+            beginStock({x: e.clientX, y: e.clientY});
+        };
+        //鼠标松开
+        canvas.onmouseup = function (e) {
+            e.preventDefault();
+            endStock();
+            //console.log("mouseup");
+        };
+        //鼠标移出指定对象时发生
+        canvas.onmouseout = function (e) {
+            e.preventDefault();
+            endStock();
+        };
+        //鼠标移动过程中
+        canvas.onmousemove = function (e) {
+            e.preventDefault();
+            if (isMouseDown) {
+                moveStock({x: e.clientX, y: e.clientY});
+            }
+        };
+        //移动端（触碰相关的事件）
+        canvas.addEventListener('touchstart', function (e) {
+            e.preventDefault();
+            //触碰事件，也可能是多点触碰，就是第一个
+            let touch = e.touches[0];
+            beginStock({x: touch.pageX, y: touch.pageY});
+        });
+        canvas.addEventListener('touchmove', function (e) {
+            e.preventDefault();
+            if (isMouseDown) {
+                //console.log("mousemove");
+                let touch = e.touches[0];
+                moveStock({x: touch.pageX, y: touch.pageY});
+
+            }
+        });
+        canvas.addEventListener('touchend', function (e) {
+            e.preventDefault();
+            endStock();
+        });
+    })
+
+    //屏幕坐标点转化为canvas画布坐标,定位canvas画布上的坐标
+    function windowToCanvas(x, y) {
+        //包含canvas距离画布的上和左边距
+        var bbox = canvas.getBoundingClientRect();
+        return {x: Math.round(x - bbox.left), y: Math.round(y - bbox.top)}
+    }
+
+    //通过两点计算出两点之间距离
+    function calDistance(loc1, loc2) {
+        return Math.sqrt((loc1.x - loc2.x) * (loc1.x - loc2.x) + (loc1.y - loc2.y) * (loc1.y - loc2.y));
+    }
+
+    //笔画速度越快，笔越细，反之越粗！
+    var maxlinewidth = 20;
+    var minlinewidth = 1;
+    var maxlinespeed = 2;
+    var minlinespeed = 0.1;
+
+    //计算毛笔宽度
+    function CalClientWidth(t, s) {
+        var v = s / t;
+        var ResultLineWidth;
+        //处理速度很慢和很快的情况
+        if (v <= minlinespeed)
+            ResultLineWidth = maxlinewidth;
+        else if (v >= maxlinespeed)
+
+            ResultLineWidth = minlinewidth;
+        else
+            ResultLineWidth = maxlinewidth - (v - minlinespeed) / (maxlinespeed - minlinespeed) * (maxlinewidth - minlinewidth);
+        if (laslinewidth == -1)
+            return ResultLineWidth;
+        return laslinewidth * 2 / 3 + ResultLineWidth * 1 / 3;
+    }
+
+    //设置背景及字体位置标识
+    function drawBackGround(){
+        context.fillStyle = "red";
+        context.fillRect(0,0,canvasWidth,canvasHeight);
+        $(".tag").remove();
+        var y = 50;
+        for (var i = 0; i <= num; i++) {
+            //具体的绘制，鼠标按下之后
+            var divElement = document.createElement("div");
+            divElement.style.background = "black";
+            divElement.style.position = "absolute";
+            divElement.style.top = y + "px";
+            divElement.style.left = "0px";
+            divElement.style.width = "10px";
+            divElement.style.height = "5px";
+            divElement.setAttribute("class","tag")
+            $("#div").append(divElement);
+            y += canvasWidth;
+        }
+    }
+
+    function beginStock(point) {
+        isMouseDown = true;
+        lasloc = windowToCanvas(point.x, point.y - Math.max($("body").scrollTop(),document.documentElement.scrollTop));
+        lasTimeStamp = new Date().getTime();
+    }
+
+    function endStock(point) {
+        isMouseDown = false;
+    }
+
+    function moveStock(point) {
+        var curloc = windowToCanvas(point.x, point.y - Math.max($("body").scrollTop(),document.documentElement.scrollTop));
+        var curTimeStamp = new Date().getTime();
+
+        var s = calDistance(curloc, lasloc);
+        var t = curTimeStamp - lasTimeStamp;
+
+        var lineWidth = CalClientWidth(t, s);
+
+        //具体的绘制，鼠标按下之后
+        context.beginPath();
+        context.moveTo(lasloc.x, lasloc.y);
+        context.lineTo(curloc.x, curloc.y);
+        context.strokeStyle = strokeColor;
+        context.lineWidth = lineWidth;
+        //设置线条的帽子，是线条平滑
+        context.lineCap = "round";
+        context.lineJoin = "round";
+        context.stroke();
+        lasloc = curloc;
+        lasTimeStamp = curTimeStamp;
+        laslinewidth = lineWidth;
+    }
+
+    function downloadImage(){
+        var image = canvas.toDataURL("image/png");
+        var linkElement = document.createElement("a");
+        linkElement.setAttribute('href',image);
+        linkElement.setAttribute('downLoad','春联');
+        linkElement.click();
+        drawBackGround();
+    }
+
+    function changeNum(){
+        var s = prompt("请填写春联字数");
+        if(!s.match(/\d+/) || new Number(s) < 1){
+            alert("请填写正确数字")
+            return;
+        }
+        num = new Number(s);
+        canvasHeight = canvasWidth * num + 100;
+        canvas.height = canvasHeight;
+        drawBackGround();
+    }
+
+    function onReset() {
+        drawBackGround();
+    }
+</script>
+
+<style>
+    /* CSS Document */
+
+    #canvas {
+        display: block;
+        margin: 0 auto;
+        border: 1px solid #aaa;
+    }
+
+    #controller {
+        position: fixed;
+        width: 200px;
+        bottom: 180px;
+        right: -90px;
+        transform: rotate(90deg);
+    }
+
+    .op_btn {
+        float: right;
+        margin: 10px 0 0 10px;
+        border: 1px solid #efefef;
+        width: 50px;
+        height: 25px;
+        line-height: 25px;
+        font-size: 12px;
+        text-align: center;
+        border-radius: 2px;
+        cursor: pointer;
+        background: #fff;
+    }
+
+    .op_btn {
+        background-color: red;
+        color:#fff;
+    }
+
+    .clearfix {
+        clear: both;
+    }
+</style>
+
+</body>
+</html>
