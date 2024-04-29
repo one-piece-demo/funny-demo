@@ -151,6 +151,7 @@ const CompatibleVideo = () => {
         const tracks = stream.getTracks();
         tracks.forEach(track => {track.stop()})
       }
+      video.srcObject = null;
     }
     if (video.src) {
       const stream1 = video.src
@@ -158,6 +159,7 @@ const CompatibleVideo = () => {
       if (tracks1) {
         tracks1.forEach(track => {track.stop()})
       }
+      video.src = null;
     }
     setShowCamera(false);
   }

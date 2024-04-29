@@ -16,7 +16,7 @@ const RecordVideo = () => {
   const recordedBlobs = useRef<any[]>([]);
 
   const onResetNumber = () => {
-    setNumber(Math.floor(Math.random() * 10000).toString());
+    setNumber(Math.floor(Math.random() * 9000 + 1000).toString());
   }
 
   const getCamera = () => {
